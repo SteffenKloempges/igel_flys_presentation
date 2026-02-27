@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<title>Fly like an Igel – Projektpräsentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Reveal.js Styles -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/theme/white.css" id="theme">
+
+	<style>
+		.mermaid {
+			max-width: 100%;
+			margin: auto;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+
+			<!-- 1. Titelfolie -->
+			<section data-background-image="images/logo.png" data-background-size="100%" data-transition="zoom"
+				style="color: crimson;">
+				<h1 class="fragment fade-down" style="color: crimson;">Fly like an Igel</h1>
+				<h3 class="fragment fade-up" data-fragment-index="1" style="color: crimson;">
+					Igels-Wings GmbH – Bierstadt
+				</h3>
+				<p class="fragment fade-in" data-fragment-index="2">
+					Präsentation: <b>Steffen Klömpges</b>
+				</p>
+				<p class="fragment fade-in" data-fragment-index="3">
+					Datum: <b>27.02.2026</b>
+				</p>
+			</section>
+
+			<!-- 2. Team -->
+			<section>
+				<h2 class="fragment fade-down">Unser Team</h2>
+				<ul>
+					<li class="fragment fade-right">Steffen Klömpges – Projektleiter</li>
+					<li class="fragment fade-right">Steffen Klömpges – Lead Entwickler</li>
+					<li class="fragment fade-right">Steffen Klömpges – Innovationsbeauftragter</li>
+					<li class="fragment fade-right">Steffen Klömpges – Gleichstellungsbeauftragter</li>
+					<li class="fragment fade-right">Devstral Small 2 – Entwickler</li>
+					<li class="fragment fade-right">Claude Opus 4.6 – Entwickler</li>
+					<li class="fragment fade-right">ChatGPT – Entwickler</li>
+				</ul>
+			</section>
+
+			<!-- 3. Einleitung -->
+			<section>
+				<h2 class="fragment fade-down">Einleitung</h2>
+				<ul>
+					<li class="fragment fade-left">Igels-Wings GmbH – kleine Fluggesellschaft in Bierstadt</li>
+					<li class="fragment fade-left">Aktueller Stand: papierbasierte Prozesse</li>
+					<li class="fragment fade-left">Ziel: webbasierte Lösung</li>
+				</ul>
+			</section>
+
+			<!-- 4. Analyse -->
+			<section>
+				<h2 class="fragment fade-down">Analyse</h2>
+				<div style="display: flex; justify-content: center;">
+					<div style="display: flex; gap: 5%;">
+						<div class="fragment fade-left">
+							<h3>Ist-Analyse</h3>
+							<ul>
+								<li class="fragment highlight-red">Klebezettel</li>
+								<li class="fragment highlight-red">Formulare</li>
+								<li class="fragment highlight-red">Manuell</li>
+								<li class="fragment highlight-red">Chaos</li>
+							</ul>
+						</div>
+						<div class="fragment fade-right">
+							<h3>Soll-Konzept</h3>
+							<ul>
+								<li class="fragment highlight-green">Digital</li>
+								<li class="fragment highlight-green">REST-API</li>
+								<li class="fragment highlight-green">EF Core 7</li>
+								<li class="fragment highlight-green">PostgreSQL</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 5. Ressourcen -->
+			<section>
+				<h2 class="fragment fade-down">Ressourcen & Zeitplan</h2>
+				<table class="fragment fade-down">
+					<thead>
+						<tr>
+							<th>Aufgabe</th>
+							<th>Planung (h)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="fragment fade-up">
+							<td>Konzeptionierung</td>
+							<td>8</td>
+						</tr>
+						<tr class="fragment fade-up">
+							<td>ER-Diagramm</td>
+							<td>2</td>
+						</tr>
+						<tr class="fragment fade-up">
+							<td>Datenbank Entwurf</td>
+							<td>2</td>
+						</tr>
+						<tr class="fragment fade-up">
+							<td>Programmierung</td>
+							<td>8</td>
+						</tr>
+						<tr class="fragment fade-up">
+							<td>Tests</td>
+							<td>2</td>
+						</tr>
+						<tr class="fragment fade-up">
+							<td>Präsi & Bericht</td>
+							<td>3</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr class="fragment fade-in">
+							<td><strong>Summe</strong></td>
+							<td>25</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+
+			<!-- 6. Architektur -->
+			<section>
+				<h2 class="fragment fade-down">Architektur</h2>
+				<ul>
+					<li class="fragment fade-in-then-semi-out">MVC Pattern</li>
+					<li class="fragment fade-in-then-semi-out">Repository-Pattern</li>
+					<li class="fragment fade-in-then-semi-out">Entity Framework Core 7</li>
+					<li class="fragment fade-in-then-semi-out">PostgreSQL 15</li>
+				</ul>
+			</section>
+
+			<!-- ER Diagramm -->
+			<section data-transition="fade">
+				<h2 class="fragment fade-down">Datenmodell (ER-Diagramm)</h2>
+				<div class="mermaid fragment fade-in">
+					erDiagram
+
+					Aircraft {
+					int Id PK
+					string RegistrationNumber
+					string Model
+					}
+
+					Customer {
+					int Id PK
+					string CompanyName
+					string ContactPerson
+					string Address
+					string City
+					string Country
+					string Email
+					}
+
+					Cargo {
+					int Id PK
+					string Description
+					double WeightKg
+					datetime DeliveryDate
+					bool DangerousGoods
+					int CustomerId FK
+					}
+
+					Pilot {
+					int Id PK
+					string FirstName
+					string LastName
+					string LicenseNumber
+					datetime HireDate
+					string Rank
+					}
+
+					Flight {
+					int Id PK
+					string FlightNumber
+					datetime DepartureTime
+					datetime ArrivalTime
+					string DepartureAirport
+					string ArrivalAirport
+					int AircraftId FK
+					}
+
+					CargoFlight {
+					int CargoId PK
+					int FlightId PK
+					}
+
+					PilotAircraft {
+					int PilotId PK
+					int AircraftId PK
+					}
+
+					FlightPilot {
+					int FlightId PK
+					int PilotId PK
+					string Role
+					}
+
+					Aircraft ||--o{ Flight : "1-M"
+					Aircraft ||--o{ PilotAircraft : "1-M"
+					Pilot ||--o{ PilotAircraft : "1-M"
+					Flight ||--o{ FlightPilot : "1-M"
+					Pilot ||--o{ FlightPilot : "1-M"
+					Flight ||--o{ CargoFlight : "1-M"
+					Cargo ||--o{ CargoFlight : "1-M"
+					Customer ||--o{ Cargo : "1-M"
+				</div>
+			</section>
+
+			<!-- Bilder -->
+			<section>
+				<h2 class="fragment fade-down">Aufbau der Struktur</h2>
+				<div style="display: flex; gap: 10px; align-items: center;">
+					<img src="./images/piloten_modell.png" class="fragment fade-right" style="width: 50%">
+					<img src="./images/datenbank_builder.png" class="fragment fade-left" style="width: 50%">
+				</div>
+			</section>
+
+			<!-- Tests -->
+			<section>
+				<h2 class="fragment fade-down">Validierung</h2>
+				<ol>
+					<li class="fragment fade-left">UI Tests</li>
+					<li class="fragment fade-left">Funktionsprüfung</li>
+				</ol>
+			</section>
+
+			<!-- Soll Ist -->
+			<section>
+				<h2 class="fragment fade-down">Soll / Ist Vergleich</h2>
+				<div style="display: flex; justify-content: center; gap: 5%;">
+					<div class="fragment fade-left">
+						<h3>Ist</h3>
+						<ol>
+							<li>Analog</li>
+							<li>Chaotisch</li>
+							<li>Dezentral</li>
+						</ol>
+					</div>
+					<div class="fragment fade-right">
+						<h3>Soll</h3>
+						<ol>
+							<li>Digital</li>
+							<li>Übersichtlich</li>
+							<li>Zentral</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+
+			<!-- Fazit -->
+			<section data-transition="convex">
+				<h2 class="fragment fade-up">Fazit</h2>
+				<ul>
+					<li class="fragment fade-left">Planung ist entscheidend</li>
+					<li class="fragment fade-left">Saubere Datenmodelle</li>
+					<li class="fragment fade-left">MVC verstanden</li>
+				</ul>
+			</section>
+
+			<!-- Danke -->
+			<section data-transition="zoom">
+				<img src="./images/danke.jpg" class="fragment fade-in">
+			</section>
+
+		</div>
+	</div>
+
+	<!-- Reveal.js -->
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
+
+	<script>
+		Reveal.initialize({
+			hash: true,
+			slideNumber: true,
+			transition: 'slide',
+			transitionSpeed: 'fast',
+			backgroundTransition: 'fade',
+			plugins: [RevealMermaid],
+			mermaid: {
+				theme: 'neutral',
+				embedded: true
+			}
+		});
+	</script>
+
+</body>
+
+</html>

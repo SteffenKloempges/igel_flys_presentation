@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fly like an Igel – Projektpräsentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reveal.js Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/theme/white.css" id="theme">
+
+    <style>
+        /* Diagramm schöner zentrieren */
+        .mermaid {
+            max-width: 100%;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- 1. Titelfolie -->
+            <section data-background-image="images/logo.png" data-background-size="100%" style="color: crimson;">
+                <h1 style="color: crimson;">Fly like an Igel</h1>
+                <h3 style="color: crimson;">Igels‑Wings GmbH – Bierstadt</h3>
+                <p>Präsentation: <b>Steffen Klömpges</b></p>
+                <p>Datum: <b>27.02.2026</b></p>
+            </section>
+
+            <!-- 2. Vorstellung / Wer sind wir -->
+            <section>
+                <h2>Unser Team</h2>
+                <ul>
+                    <li>Steffen Klömpges – Projektleiter</li>
+                    <li>Steffen Klömpges – Lead Entwickler</li>
+                    <li>Steffen Klömpges – Innovationsbeauftragter</li>
+                    <li>Steffen Klömpges – Gleichstellungsbeauftragter</li>
+                    <li>Devstral Small 2 – Entwickler</li>
+                    <li>Claude Opus 4.6 – Entwickler</li>
+                    <li>ChatGPT – Entwickler</li>
+                </ul>
+            </section>
+
+            <!-- 3. Einleitung -->
+            <section>
+                <h2>Einleitung</h2>
+                <ul>
+                    <li>Igels‑Wings GmbH – kleine Fluggesellschaft in Bierstadt</li>
+                    <li>Aktueller Stand: papierbasierte Prozesse</li>
+                    <li>Ziel: webbasierte Lösung (ASP.NET Core MVC + PostgreSQL)</li>
+                </ul>
+            </section>
+
+            <!-- 4. Analyse – Ist / Soll -->
+            <section>
+                <h2>Analyse</h2>
+                <div style="display: flex; justify-self: center; gap: 5%;">
+                    <div>
+                        <h3>Ist‑Analyse</h3>
+                        <ul>
+                            <li>Klebezettel</li>
+                            <li>Formulare</li>
+                            <li>Manuell von Hand</li>
+                            <li>Chaos</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Soll‑Konzept</h3>
+                        <ul>
+                            <li>Digitales Wunderwerk</li>
+                            <li>REST‑API für CRUD‑Operationen</li>
+                            <li>Entity Framework Core 7</li>
+                            <li>PostgreSQL Datenbank</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Ressourcen -->
+            <section>
+                <h2>Ressourcen & Zeitplan</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aufgabe</th>
+                            <th>Planung (h)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ER‑Diagramm</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Datenbank‑Implementierung</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>CRUD‑Implementierung</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td>Tests</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Präsentation & Bericht</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td><strong>Summe</strong></td>
+                            <td>25</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+
+            <!-- 6. Konzeption -->
+            <section>
+                <h2>Architektur</h2>
+                <ul>
+                    <li>MVC Pattern (Controllers, Views, Models)</li>
+                    <li>Repository‑Pattern (DbContext)</li>
+                    <li>Entity Framework Core 7</li>
+                    <li>PostgreSQL 15</li>
+                </ul>
+            </section>
+
+            <!-- ER DIAGRAMM -->
+            <section>
+                <h2>Datenmodell (ER-Diagramm)</h2>
+                <div class="mermaid">
+                    erDiagram
+
+                    Aircraft {
+                    int Id PK
+                    string RegistrationNumber
+                    string Model
+                    }
+
+                    Customer {
+                    int Id PK
+                    string CompanyName
+                    string ContactPerson
+                    string Address
+                    string City
+                    string Country
+                    string Email
+                    }
+
+                    Cargo {
+                    int Id PK
+                    string Description
+                    double WeightKg
+                    datetime DeliveryDate
+                    bool DangerousGoods
+                    int CustomerId FK
+                    }
+
+                    Pilot {
+                    int Id PK
+                    string FirstName
+                    string LastName
+                    string LicenseNumber
+                    datetime HireDate
+                    string Rank
+                    }
+
+                    Flight {
+                    int Id PK
+                    string FlightNumber
+                    datetime DepartureTime
+                    datetime ArrivalTime
+                    string DepartureAirport
+                    string ArrivalAirport
+                    int AircraftId FK
+                    }
+
+                    CargoFlight {
+                    int CargoId PK
+                    int FlightId PK
+                    }
+
+                    PilotAircraft {
+                    int PilotId PK
+                    int AircraftId PK
+                    }
+
+                    FlightPilot {
+                    int FlightId PK
+                    int PilotId PK
+                    string Role
+                    }
+
+                    Aircraft ||--o{ Flight : "1-M"
+                    Aircraft ||--o{ PilotAircraft : "1-M"
+                    Pilot ||--o{ PilotAircraft : "1-M"
+                    Flight ||--o{ FlightPilot : "1-M"
+                    Pilot ||--o{ FlightPilot : "1-M"
+                    Flight ||--o{ CargoFlight : "1-M"
+                    Cargo ||--o{ CargoFlight : "1-M"
+                    Customer ||--o{ Cargo : "1-M"
+                </div>
+            </section>
+            <!-- 7. Beispiele -->
+            <section>
+                <h2>Aufbau der Struktur</h2>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="./images/piloten_modell.png" alt="" style="width: 50%">
+                    <img src="./images/datenbank_builder.png" alt="" style="width: 50%">
+                </div>
+            </section>
+            <!-- 8. Tests -->
+            <section>
+                <h2>Validierung</h2>
+                <h3>Whitebox-Tests</h3>
+                <ol>
+                    <li>UI Testing</li>
+                    <li>Test der Funktionalität in der UI</li>
+                </ol>
+            </section>
+            <!-- 9. Abschluss -->
+            <section>
+                <h2>Abschluss</h2>
+            </section>
+            <!-- 10. Soll/-ist vergleich -->
+            <section>
+                <h2>Soll/-ist vergleich</h2>
+                <div style="display: flex; justify-content: center; gap: 5%;">
+                    <div>
+                        <h3>Ist Zustand</h3>
+                        <ol>
+                            <li>Analog</li>
+                            <li>Chaotisch</li>
+                            <li>Dezentral</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3>Soll Zustand</h3>
+                        <ol>
+                            <li>Digital</li>
+                            <li>Übersichtlich</li>
+                            <li>Zentral</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+            <!-- 11. Soll/-ist vergleich -->
+            <section>
+                <h2>Fazit</h2>
+                <h3>Was haben wir gelernt:</h3>
+                <ul>
+                    <li>Vorbereitung und Planung --> Wichtig</li>
+                    <li>Datenmodelle müssen sauber sein</li>
+                    <li>Tieferes Verständnis von ASP .NET Core MVC</li>
+                </ul>
+            </section>
+            <section>
+                <img src="./images/danke.jpg" alt="">
+            </section>
+        </div>
+    </div>
+
+
+    <!-- Reveal.js -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.4.0/dist/reveal.min.js"></script>
+
+    <!-- Reveal Mermaid Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
+
+
+    <script>
+
+        Reveal.initialize({
+
+            hash: true,
+            slideNumber: true,
+            transition: 'slide',
+
+            plugins: [RevealMermaid],
+
+            mermaid: {
+                theme: 'neutral',
+                embedded: true
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
